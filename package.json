@@ -1,0 +1,38 @@
+{
+  "name": "express-todo",
+  "version": "1.0.0",
+  "description": "ToDo made with express",
+  "main": "./public/js/bundle/index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "frontend": "parcel watch --target js --target scss --no-source-maps"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10"
+  },
+  "devDependencies": {
+    "@parcel/transformer-pug": "^2.4.1",
+    "@parcel/transformer-sass": "^2.4.1",
+    "parcel": "^2.4.1",
+    "process": "^0.11.10"
+  },
+  "targets": {
+    "js": {
+      "source": "./public/js/index.js",
+      "distDir": "./public/js/bundle"
+    },
+    "scss": {
+      "source": "./public/styles/main.scss",
+      "distDir": "./public/styles/"
+    },
+    "html": {
+      "source": "./views/infoPage.pug",
+      "distDir": "./public/"
+    }
+  }
+}

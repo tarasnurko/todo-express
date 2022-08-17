@@ -1,0 +1,38 @@
+extends base
+
+block pageName 
+  div.page-name Main Page
+
+block content 
+  div.todo__header
+    a(href="/create", class="btn btn-green todo__create-btn") Create
+    input(class="todo__search-input", type="text", name="", placeholder="Search") 
+    a(href="#", class="btn btn-search todo__search-btn") Search
+  
+  div.todo-inner
+
+    each todo in todos
+      - let day = todo.createdAt.getDate();
+      - let month = todo.createdAt.getMonth() + 1;
+      - let year = todo.createdAt.getFullYear();
+      - day < 10 ? day = `0${day}` : day = day;
+      - month < 10 ? month = `0${month}` : month = month;
+
+      a(class=`todo-block ${todo.important === true ? 'todo-block__important' : ''}`, href=`/todo/${todo._id}`)
+        div.todo-block__title= todo.title
+        div.todo-block__info 
+          div.todo-block__divider
+          div.todo-block__difficulty= todo.difficulty
+          div.todo-block__divider
+          div.todo-block__date= `${day}-${month}-${year}`
+          div.todo-block__divider
+          div.todo-block__finished
+            if (todo.finished)
+              div.todo-block__checked
+                svg(width="30", height="30", viewBox="0 0 30 30", fill="none", xmlns="http://www.w3.org/2000/svg")
+                  path(d="M11.25 20.25L6 15L4.25 16.75L11.25 23.75L26.25 8.75L24.5 7L11.25 20.25Z", fill="white")
+
+    
+
+
+    

@@ -1,0 +1,54 @@
+extends base
+
+block pageName 
+  div.page-name Update Page 
+
+block content 
+  div.create-wrapper
+    a(class="arrow-back", href="javascript:javascript:history.go(-1)")
+      svg(width="83" height="83" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg")
+        path(d="M60 35.125H37.1812L47.6625 24.6437L45 22L30 37L45 52L47.6437 49.3562L37.1812 38.875H60V35.125Z" fill="white")
+
+    div.create-block
+      div.create-input__wrapper
+        input(class="create-input__title",  type="text", value=`${todo.title}`)
+        div.create-input__name Title
+      div.create-checkbox__block 
+        div.create-checkbox__text Finished
+        if (todo.finished)
+          input(id="isFinished", class="create-checkbox__square", type="checkbox", checked) 
+        else 
+          input(id="isFinished", class="create-checkbox__square", type="checkbox") 
+
+    div.create-block
+      div.create-input__wrapper
+        textarea(class="create-input__description")= todo.description
+        div.create-input__name Description
+      div.create-checkbox__block 
+        div.create-checkbox__text Important
+        if (todo.important)
+          input(id="isImportant", class="create-checkbox__square", type="checkbox", checked) 
+        else 
+          input(id="isImportant", class="create-checkbox__square", type="checkbox") 
+
+    div.create-block
+      div.create-select
+        div.create-input__name Difficulty
+        select(class="create-input__select")
+          if (todo.difficulty == "easy")
+            option(value="easy", selected) easy
+            option(value="medium") medium
+            option(value="difficult") difficult
+          else if (todo.difficulty == "medium")
+            option(value="easy") easy
+            option(value="medium", selected) medium
+            option(value="difficult") difficult
+          else
+            option(value="easy", selected) easy
+            option(value="medium") medium
+            option(value="difficult", selected) difficult
+
+      div.create__btn-block
+        a(class="btn btn-red create__btn-delete", href="#") Delete
+        a(class="btn btn-green create__btn-update", href="#") Update
+        

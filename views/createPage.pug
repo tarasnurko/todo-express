@@ -1,0 +1,36 @@
+extends base
+
+block pageName 
+  div.page-name Create Page 
+
+block content 
+  div.create-wrapper
+    a(class="arrow-back", href="/")
+      svg(width="83" height="83" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg")
+        path(d="M60 35.125H37.1812L47.6625 24.6437L45 22L30 37L45 52L47.6437 49.3562L37.1812 38.875H60V35.125Z" fill="white")
+
+    div.create-block
+      div.create-input__wrapper
+        input(class="create-input__title",  type="text")
+        div.create-input__name Title
+      div.create-checkbox__block 
+        div.create-checkbox__text Finished
+        input(id="isFinished",class="create-checkbox__square", type="checkbox") 
+
+    div.create-block
+      div.create-input__wrapper
+        textarea(class="create-input__description")
+        div.create-input__name Description
+      div.create-checkbox__block 
+        div.create-checkbox__text Important
+        input(id="isImportant", class="create-checkbox__square", type="checkbox") 
+
+    div.create-block
+      div.create-select
+        div.create-input__name Difficulty
+        select.create-input__select
+          option(value="easy") easy
+          option(value="medium", selected) medium
+          option(value="difficult") difficult
+
+      a(class="btn btn-green create-block__btn-create", href="#") Create

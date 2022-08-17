@@ -1,0 +1,34 @@
+extends base
+
+block pageName 
+  div.page-name Update Page 
+
+block content 
+  div.info-wrapper
+
+    a(class="arrow-back", href="/")
+      svg(width="83" height="83" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg")
+        path(d="M60 35.125H37.1812L47.6625 24.6437L45 22L30 37L45 52L47.6437 49.3562L37.1812 38.875H60V35.125Z" fill="white")
+
+    - let day = todo.createdAt.getDate();
+    - let month = todo.createdAt.getMonth() + 1;
+    - let year = todo.createdAt.getFullYear();
+    - day < 10 ? day = `0${day}` : day = day;
+    - month < 10 ? month = `0${month}` : month = month;
+
+    div.info-header
+      div.info-difficulty= todo.difficulty 
+
+      if (todo.important)
+        div(class="info-important info-important__true") Important
+      else 
+        div(class="info-important") Not important
+
+      div.info-date= `${day}-${month}-${year}`
+
+    div.info-block
+      div.info-text
+        div.info-title= todo.title 
+        div.info-description= todo.description   
+      
+      a(class="btn btn-green info__btn-create", href=`/todo/${todo.id}/update`) Update
